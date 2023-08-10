@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: author_name
+      changes:
+        - addColumn:
+            tableName: countries
+            columns:
+              - column:
+                  name: flag
+                  type: varchar(255)
+        - update:
+            tableName: countries
+            columns:
+              - column:
+                  name: flag
+                  value: "🇺🇸"
+            where: name = 'USA'
+        - update:
+            tableName: countries
+            columns:
+              - column:
+                  name: flag
+                  value: "🇨🇦"
+            where: name = 'Canada'
+        - update:
+            tableName: countries
+            columns:
+              - column:
+                  name: flag
+                  value: "🇲🇽"
+            where: name = 'Mexico'

@@ -1,0 +1,65 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3
+      author: author_name
+      changes:
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: name
+                  value: "Germany"
+              - column:
+                  name: iso2
+                  value: "DE"
+              - column:
+                  name: iso3
+                  value: "DEU"
+              - column:
+                  name: flag
+                  value: "🇩🇪"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: name
+                  value: "Japan"
+              - column:
+                  name: iso2
+                  value: "JP"
+              - column:
+                  name: iso3
+                  value: "JPN"
+              - column:
+                  name: flag
+                  value: "🇯🇵"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: name
+                  value: "South Africa"
+              - column:
+                  name: iso2
+                  value: "ZA"
+              - column:
+                  name: iso3
+                  value: "ZAF"
+              - column:
+                  name: flag
+                  value: "🇿🇦"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: name
+                  value: "Australia"
+              - column:
+                  name: iso2
+                  value: "AU"
+              - column:
+                  name: iso3
+                  value: "AUS"
+              - column:
+                  name: flag
+                  value: "🇦🇺"

@@ -1,0 +1,66 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: author_name
+      changes:
+        - createTable:
+            tableName: countries
+            columns:
+              - column:
+                  name: id
+                  type: SERIAL
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: iso2
+                  type: char(2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: iso3
+                  type: char(3)
+                  constraints:
+                    nullable: false
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: name
+                  value: USA
+              - column:
+                  name: iso2
+                  value: US
+              - column:
+                  name: iso3
+                  value: USA
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: name
+                  value: Canada
+              - column:
+                  name: iso2
+                  value: CA
+              - column:
+                  name: iso3
+                  value: CAN
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: name
+                  value: Mexico
+              - column:
+                  name: iso2
+                  value: MX
+              - column:
+                  name: iso3
+                  value: MEX

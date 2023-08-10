@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: classpath:db/changelog/01-initial-setup.yaml
+  - include:
+      file: classpath:db/changelog/02-add-flags.yaml
+  - include:
+      file: classpath:db/changelog/03-add-countries.yaml
