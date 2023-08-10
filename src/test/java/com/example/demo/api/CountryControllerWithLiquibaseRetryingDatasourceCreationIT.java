@@ -70,7 +70,7 @@ public class CountryControllerWithLiquibaseRetryingDatasourceCreationIT {
             liquibase.setChangeLog("classpath:db/changelog/db.changelog-master.yaml");
             return liquibase;
         }
-    }    
+    }
 
     @Container
     @ServiceConnection

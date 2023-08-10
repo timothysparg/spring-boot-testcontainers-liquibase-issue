@@ -21,8 +21,6 @@ import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
-import com.zaxxer.hikari.HikariDataSource;
-
 import liquibase.integration.spring.SpringLiquibase;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -31,48 +29,24 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Testcontainers
 @AutoConfigureMockMvc
-public class CountryControllerWithHikariDatasourceCreationIT {
+public class CountryControllerWithLiquibaseBeanIT {
 
     private static final Logger logger = LoggerFactory.getLogger(
-                    CountryControllerWithHikariDatasourceCreationIT.class);
+                    CountryControllerWithLiquibaseBeanIT.class);
 
     @TestConfiguration
     @AutoConfigureBefore(LiquibaseAutoConfiguration.class)
     static class TestConfig {
 
         @Bean
-        public SpringLiquibase springLiquibase(HikariDataSource ds) throws InterruptedException {
-
-            int attemptCount = 0;
-            int maxAttempts = 20;
-            Connection c = null;
-
-            while (attemptCount < maxAttempts) {
-                try {
-                    c = ds.getConnection();
-                    if (c != null) {
-                        break;
-                    }
-                } catch (SQLException e) {
-                    attemptCount++;
-                    logger.warn("Datasource not available. Attempt " + attemptCount + " of " + maxAttempts);
-
-                    if (attemptCount >= maxAttempts) {
-                        logger.error("Failed to get a connection after " + maxAttempts + " attempts. Exiting.");
-                        return null;
-                    }
-                    // initially had the below line in with higher values, but ended up removing it entirely
-                    // the conclusion that I draw is that the first call always fails ??
-                    // Thread.sleep(1);
-                }
-            }
+        public SpringLiquibase springLiquibase(DataSource ds)  {
 
             var liquibase = new SpringLiquibase();
             liquibase.setDataSource(ds);
             liquibase.setChangeLog("classpath:db/changelog/db.changelog-master.yaml");
             return liquibase;
         }
-    }    
+    }
 
     @Container
     @ServiceConnection
