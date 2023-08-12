@@ -30,7 +30,7 @@ jobs:
       - name: Build and Run Tests
         run: mvn test --batch-mode --fail-at-end
       - name: Publish Test Report
-        if: success() || failure()
+        if: success() || failure() || cancelled()
         uses: scacap/action-surefire-report@v1.7.2
         with:
           check_name: ${{ matrix.os }} - Test Report
