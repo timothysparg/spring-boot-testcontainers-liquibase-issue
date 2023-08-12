@@ -20,6 +20,9 @@ jobs:
           distribution: 'adopt'
           java-version: '17'
 
+      - name: emit docker version
+        run: docker --version
+
       - name: link docker
         run: |
           # https://github.com/abiosoft/colima/blob/main/docs/FAQ.md#cannot-connect-to-the-docker-daemon-at-unixvarrundockersock-is-the-docker-daemon-running
