@@ -1,5 +1,7 @@
 package com.example.demo.api;
 
+import java.time.Duration;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -24,7 +26,9 @@ public class CountryControllerIT {
     static PostgreSQLContainer<?> postgres =
                     new PostgreSQLContainer<>("postgres:15.2-alpine")
                                     .withUsername("dummy")
-                                    .withPassword("dummy");
+                                    .withPassword("dummy")
+                                    //.withMinimumRunningDuration(Duration.ofSeconds(5))
+                                    ;
 
     @Autowired
     private MockMvc mockMvc;
