@@ -20,6 +20,9 @@ jobs:
           distribution: 'adopt'
           java-version: '17'
 
+      - name: emit colima version
+        run: colima --version
+
       - name: emit docker version
         run: docker --version
 
