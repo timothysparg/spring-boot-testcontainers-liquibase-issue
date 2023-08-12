@@ -24,7 +24,9 @@ jobs:
         run: colima --version
 
       - name: emit docker version
-        run: docker --version
+        run: |
+          brew install docker
+          docker --version
 
       - name: link docker
         run: |
