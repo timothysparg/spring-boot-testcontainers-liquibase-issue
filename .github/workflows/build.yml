@@ -23,9 +23,12 @@ jobs:
       - name: emit colima version
         run: colima --version
 
+      - name: add docker version
+        run: |
+          brew install docker docker-Buildx
+
       - name: emit docker version
         run: |
-          brew install docker
           docker --version
 
 #      - name: link docker
