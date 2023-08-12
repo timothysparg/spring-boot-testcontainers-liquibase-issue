@@ -36,10 +36,10 @@ public class CountryRepositoryTest {
 
     @Test
     public void whenFindByName_thenShouldReturnCountry() {
-        Country germany = new Country(null, "Germany", "DE", "DEU", "🇩🇪");
-        countryRepository.save(germany);
+        Country liechtenstein = new Country(null, "Liechtenstein", "LI", "LIE", "🇱🇮");
+        countryRepository.save(liechtenstein);
 
-        Country found = countryRepository.findByName("Germany");
-        assertThat(found.getName()).isEqualTo(germany.getName());
+        Country found = countryRepository.findByName("Liechtenstein");
+        assertThat(found.getName()).isEqualTo(liechtenstein.getName());
     }
 }
