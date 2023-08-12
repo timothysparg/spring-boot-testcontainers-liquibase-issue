@@ -24,5 +24,8 @@ jobs:
           distribution: 'adopt'
           java-version: '17'
 
-      - name: Build with Maven
-        run: mvn clean install
+      - name: Build and Run Tests
+        run: mvn test --batch-mode --fail-at-end
+      - name: Publish Test Report
+        if: success() || failure()
+        uses: scacap/action-surefire-report@v1.7.2
